@@ -40,6 +40,10 @@ async function loadData() {
     const geojson = await res.json();
     allFeatures = geojson.features || [];
     filteredFeatures = [...allFeatures];
+    // 🔐 Crear ID interno único para cada punto
+allFeatures.forEach((feat, index) => {
+  feat._uid = String(index);
+});
 
     buildCategoryFilter();
     renderMarkers();
@@ -217,5 +221,6 @@ categorySelect.addEventListener("change", () => {
 
 // Inicializar
 loadData();
+
 
 
