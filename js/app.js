@@ -120,7 +120,7 @@ function renderList() {
 
       const item = document.createElement("div");
       item.className =
-        "location-item" + (id === activeId ? " active" : "");
+        "location-item" + (feat._uid === activeId ? " active" : "");
 
       const titleEl = document.createElement("div");
       titleEl.className = "location-name";
@@ -139,7 +139,7 @@ function renderList() {
       item.appendChild(metaEl);
 
       item.addEventListener("click", () => {
-        focusFeature(id);
+        focusFeature(feat._uid);
       });
 
       locationsListEl.appendChild(item);
@@ -223,6 +223,7 @@ categorySelect.addEventListener("change", () => {
 
 // Inicializar
 loadData();
+
 
 
 
