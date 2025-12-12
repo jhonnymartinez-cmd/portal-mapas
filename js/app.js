@@ -94,7 +94,7 @@ function renderMarkers() {
     );
 
     marker.on("click", () => {
-      activeId = id;
+      activeId = feat._uid;
       renderList();
     });
 
@@ -150,15 +150,17 @@ function renderList() {
 }
 
 // Enfocar uno en el mapa
-function focusFeature(id) {
-  const feat = allFeatures.find((f) => f.properties?.id === id);
+function focusFeature(uid) {
+  const feat = allFeatures.find(f => f._uid === String(uid));
   if (!feat) return;
 
   const coords = feat.geometry?.coordinates;
   if (!coords || coords.length < 2) return;
+
   const [lng, lat] = coords;
 
-  activeId = id;
+  activeId = String(uid);
+
   map.setView([lat, lng], 18, { animate: true });
 
   if (feat._leafletMarker) {
@@ -221,6 +223,7 @@ categorySelect.addEventListener("change", () => {
 
 // Inicializar
 loadData();
+
 
 
 
