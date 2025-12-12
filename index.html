@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Portal de Ubicaciones</title>
+
+  <!-- Responsive -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Leaflet CSS -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  />
+
+  <!-- Estilos propios -->
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-left">
+      <div class="logo-circle">M</div>
+      <div class="topbar-text">
+        <div class="topbar-title">Portal de Ubicaciones</div>
+        <div class="topbar-subtitle">Sistema interno de mapas</div>
+      </div>
+    </div>
+    <div class="topbar-right">
+      <span class="badge">Leaflet</span>
+      <span class="badge badge-secondary">OpenStreetMap</span>
+    </div>
+  </header>
+
+  <main class="layout">
+    <!-- Panel lateral -->
+    <aside class="sidebar">
+      <section class="block">
+        <h2 class="block-title">Buscar y filtrar</h2>
+        <div class="form-group">
+          <label for="search-input">Buscar lugar</label>
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Nombre, descripción..."
+          />
+        </div>
+        <div class="form-group">
+          <label for="category-select">Categoría</label>
+          <select id="category-select">
+            <option value="all">Todas</option>
+          </select>
+        </div>
+      </section>
+
+      <section class="block">
+        <h2 class="block-title">
+          Resultados <span id="results-count"></span>
+        </h2>
+        <div id="locations-list" class="locations-list">
+          <!-- Se llena por JS -->
+        </div>
+      </section>
+
+      <section class="block block-footer">
+        <div class="footer-text">
+          Mapa base: OpenStreetMap · Motor: Leaflet<br />
+          Versión demo · Hecho en Windows 🖥️
+        </div>
+      </section>
+    </aside>
+
+    <!-- Contenedor del mapa -->
+    <section class="map-wrapper">
+      <div id="map"></div>
+    </section>
+  </main>
+
+  <!-- Leaflet JS -->
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+  ></script>
+
+  <!-- JS propio -->
+  <script src="js/app.js" defer></script>
+</body>
+</html>
