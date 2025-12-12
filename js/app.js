@@ -173,22 +173,11 @@ function focusFeature(uid) {
 // Aplicar filtros
 function applyFilters() {
   const text = searchInput.value.trim().toLowerCase();
-  const selectedCat = categorySelect.value;
 
   filteredFeatures = allFeatures.filter((feat) => {
     const props = feat.properties || {};
     const name = (props.name || "").toLowerCase();
-    const desc = (props.description || "").toLowerCase();
-    const cat = (props.category || "").toLowerCase();
-
-    const matchText =
-      !text || name.includes(text);
-
-    const matchCat =
-      selectedCat === "all" ||
-      (props.category && props.category === selectedCat);
-
-    return matchText && matchCat;
+    return !text || name.includes(text);
   });
 
   renderMarkers();
@@ -223,6 +212,7 @@ categorySelect.addEventListener("change", () => {
 
 // Inicializar
 loadData();
+
 
 
 
