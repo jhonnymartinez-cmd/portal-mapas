@@ -176,8 +176,7 @@ function applyFilters() {
     const cat = (props.category || "").toLowerCase();
 
     const matchText =
-      !text ||
-      name.includes(text) ||;
+      !text || name.includes(text);
 
     const matchCat =
       selectedCat === "all" ||
@@ -218,4 +217,5 @@ categorySelect.addEventListener("change", () => {
 
 // Inicializar
 loadData();
+
 
